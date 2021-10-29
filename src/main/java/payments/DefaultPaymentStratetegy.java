@@ -1,8 +1,9 @@
 package payments;
 
 import flowers.FlowerBucket;
+import lombok.Getter;
 
-public abstract class DefaultPaymentStratetegy {
+public abstract class DefaultPaymentStratetegy implements PaymentManager {
     protected double amount;
     protected double FEE;
 
@@ -11,7 +12,7 @@ public abstract class DefaultPaymentStratetegy {
         double sum = b.getPrice();
 
         // add
-        sum += sum * this.FEE;
+        sum *= this.FEE;
 
         if ((this.amount - sum) < 0) {
             return new Transaction("Buy bucket", 0, false);
@@ -46,5 +47,8 @@ public abstract class DefaultPaymentStratetegy {
     public double getCurrentBalance() {
         return this.amount;
     }
+
+    @Override
+    public double getFee() { return this.FEE; }
 
 }

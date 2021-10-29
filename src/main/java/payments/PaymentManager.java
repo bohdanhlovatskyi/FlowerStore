@@ -11,4 +11,6 @@ public interface PaymentManager {
     Transaction ProcessDeliveryFee(double deliveryPrice);
 
     Transaction BuyBucket(FlowerBucket b);
+
+    double getFee();
 }
