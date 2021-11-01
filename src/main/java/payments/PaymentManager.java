@@ -4,7 +4,7 @@ import flowers.FlowerBucket;
 
 public interface PaymentManager {
 
-    void ProcessTransaction(Transaction... transactions) throws Exception;
+    PaymentStatus ProcessTransaction(Transaction... transactions);
 
     double getCurrentBalance();
 
@@ -13,4 +13,6 @@ public interface PaymentManager {
     Transaction BuyBucket(FlowerBucket b);
 
     double getFee();
+
+    double getBalance();
 }

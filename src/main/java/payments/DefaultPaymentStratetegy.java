@@ -29,19 +29,18 @@ public abstract class DefaultPaymentStratetegy implements PaymentManager {
         return new Transaction("Buy bucket", deliveryPrice, true);
     }
 
-    public void ProcessTransaction(Transaction... transactions) throws Exception {
+    public PaymentStatus ProcessTransaction(Transaction... transactions) {
         double amount = 0;
         for (Transaction t : transactions) {
             if (!t.isSuccessful) {
-                throw new Exception(
-                        String.format("Could not process the transaction: %s\n",
-                                t.transactionType)
-                );
+                return PaymentStatus.PAYMENT_STATUS_FAULT;
             }
             amount += t.amount;
         }
 
         this.amount -= amount;
+
+        return PaymentStatus.PAYMENT_STATUS_OK;
     }
 
     public double getCurrentBalance() {
@@ -51,4 +50,8 @@ public abstract class DefaultPaymentStratetegy implements PaymentManager {
     @Override
     public double getFee() { return this.FEE; }
 
+    @Override
+    public double getBalance() {
+        return this.amount;
+    }
 }

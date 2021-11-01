@@ -8,9 +8,9 @@ public class TestDecorator {
 
     public static void main(String[] args) {
         Item it = new PaperDecorator(
-                    new BasketDecorator(
+                new BasketDecorator(
                         new Flower(FlowerType.CHAMOMILE)
-                    )
+                )
         );
 
         System.out.println(it.getDescription());
