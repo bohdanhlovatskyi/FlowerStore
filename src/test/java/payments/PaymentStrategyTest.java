@@ -48,6 +48,7 @@ class PaymentStrategyTest {
         m = new PayPalPaymentStrategy(DEFAULT_BALANCE - DEFAULT_BALANCE);
         ps = new PaymentStrategy(m);
         Transaction t = ps.BuyBucket(b);
-        assertThrows(Exception.class, () -> ps.ProcessPayment(t));
+
+        assertEquals(PaymentStatus.PAYMENT_STATUS_FAULT, ps.ProcessPayment(t));
     }
 }

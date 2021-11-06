@@ -24,6 +24,10 @@ public class Sender implements User {
         this.id = numOfSenders;
     }
 
+    public int GetId() {
+        return this.id;
+    }
+
     public void update(InternalStatus status) {
         // System.out.printf("[SENDER]: %s\n", status.toString());
         if (status == OrderStatus.ORDER_STATUS_OK) {

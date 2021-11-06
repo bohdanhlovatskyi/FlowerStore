@@ -12,15 +12,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class SenderTest {
 
-    Sender s1, s2;
+    static Sender s1 = new Sender();
+    static Sender s2 = new Sender();
 
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
-    @BeforeEach
-    void setUp() {
-        this.s1 = new Sender();
-        this.s2 = new Sender();
-    }
 
     @Test
     void update() {
@@ -34,7 +30,8 @@ class SenderTest {
 
     @Test
     void getId() {
-        assertEquals(1, s1.getId());
-        assertEquals(2, s2.getId());
+        System.out.println(s1);
+        assertEquals(1, s1.GetId());
+        assertEquals(2, s2.GetId());
     }
 }
