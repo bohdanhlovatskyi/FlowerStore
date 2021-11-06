@@ -1,11 +1,14 @@
 package decorators;
 
-import flowers.Item;
+import flowers.Flower;
 
-public class BasketDecorator extends ItemDecorator {
+public class BasketDecorator extends Flower implements ItemDecorator {
 
-    public BasketDecorator(Item item) {
-        super(item);
+    private Flower item;
+
+    public BasketDecorator(Flower item) {
+        super(item.getFlType());
+        this.item = item;
     }
 
     public double getPrice() {

@@ -25,19 +25,20 @@ public class Client {
         u.addDeliveryStrategy(d);
 
         // bucket that he decides to buy
+        Flower fl = new PaperDecorator(
+                new BasketDecorator(
+                        new Flower(FlowerType.CHAMOMILE)
+                )
+        );
+
         FlowerBucket b1 = new FlowerBucket();
+        b1.addFlowerPack(new FlowerPack(fl, 3));
         FlowerBucket b2  = new FlowerBucket();
 
         Receiver r = new Receiver();
         r.setAddress("UCU");
 
-        /*
-        ItemOrder o = new ItemOrder(u);
-        o.addItem(b1);
-        o.addItem(b2);
-        o.setDeliveryAddress(r.getAddress());
-        o.setFastDelivery(true);
-        */
+        // Quick order (static factory to create an object)
         ItemOrder o = ItemOrder.fromBuckets(u, b1, b2);
         o.setDeliveryAddress(r.getAddress());
         o.setFastDelivery(true);

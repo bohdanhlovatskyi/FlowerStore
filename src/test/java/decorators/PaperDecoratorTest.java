@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PaperDecoratorTest {
 
-    Item i = new Flower(FlowerType.CHAMOMILE);
+    Flower i = new Flower(FlowerType.CHAMOMILE);
     PaperDecorator p = new PaperDecorator(i);
 
     @Test
